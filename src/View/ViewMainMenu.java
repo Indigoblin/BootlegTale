@@ -45,16 +45,16 @@ public class ViewMainMenu extends Application {
         btn5 = initButton(250,420,"Back");
 
         // titre écran
+        screenTextBack = new Text();
+        screenTextBack = titleScreen("BootlegTale",200,150);
+        fontScreenTextBack = Font.loadFont(getClass().getResourceAsStream(Path.monsterFriendBack), 80);
+        screenTextBack.setFont(fontScreenTextBack);
+        screenTextBack.setFill(Color.GRAY);
         screenText = new Text();
         screenText = titleScreen("BootlegTale",200,150);
         fontScreenText = Font.loadFont(getClass().getResourceAsStream(Path.monsterFriendFore), 80);
         screenText.setFont(fontScreenText);
         screenText.setFill(Color.WHITE);
-        screenTextBack = new Text();
-        screenTextBack = titleScreen("BootlegTale",200,150);
-        fontScreenTextBack = Font.loadFont(getClass().getResourceAsStream(Path.monsterFriendBack), 80);
-        screenTextBack.setFont(fontScreenTextBack);
-        screenTextBack.setFill(Color.WHITE);
 
         // action des boutons
         btn.setOnAction(event -> primaryStage.setScene(scene2));
@@ -70,8 +70,8 @@ public class ViewMainMenu extends Application {
         root.getChildren().add(btn);
         root.getChildren().add(btn2);
         root.getChildren().add(btn3);
-        root.getChildren().add(screenText);
         root.getChildren().add(screenTextBack);
+        root.getChildren().add(screenText);
         root2.getChildren().add(btn5);
         root3.getChildren().add(btn4);
 
