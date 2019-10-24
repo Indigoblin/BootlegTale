@@ -12,9 +12,13 @@ public class Path {
 
     // Sprite joueur
     public static final String joueurFullHealth = "Asset/Pictures/PC/Human_SOUL.png";
+    // joueur 20 pv damage taken
     // joueur 15 pv
+    // joueur 15 pv damage taken
     // joueur 10 pv
-    // joueur 5pv
+    // joueur 10 pv damage taken
+    // joueur 5 pv
+    // joueur 5 pv damage taken
     public static final String joueurDeath = "Asset/Pictures/PC/Death_SOUL.gif";
 
     // Sprite attack
