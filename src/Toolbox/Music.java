@@ -13,7 +13,7 @@ public class Music {
     public static void startMainMenuMusic() {
         if( mediaPlayer != null ) mediaPlayer.stop();
         mediaPlayer = new MediaPlayer(new Media(Paths.get(MAIN_MENU_THEME).toUri().toString()));
-        mediaPlayer.setCycleCount(-1);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(volume);
         mediaPlayer.play();
     }

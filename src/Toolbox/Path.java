@@ -8,14 +8,14 @@ public class Path {
     public static final String monsterFriendBack = "../Asset/Fonts/MonsterFriendBack.otf";
 
     // Sprite personnage non-jouable
-    public static final String doggo = ".../Asset/Pictures/NPC/DoggoPet.gif";
+    public static final String doggo = "Asset/Pictures/NPC/DoggoPet.gif";
 
     // Sprite joueur
-    public static final String joueurFullHealth = ".../Asset/Pictures/PC/Human_SOUL.png";
+    public static final String joueurFullHealth = "Asset/Pictures/PC/Human_SOUL.png";
     // joueur 15 pv
     // joueur 10 pv
     // joueur 5pv
-    public static final String joueurDeath = ".../Asset/Pictures/PC/Death_SOUL.gif";
+    public static final String joueurDeath = "Asset/Pictures/PC/Death_SOUL.gif";
 
     // Sprite attack
 

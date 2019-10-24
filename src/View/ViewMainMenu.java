@@ -4,12 +4,16 @@ import Toolbox.Music;
 import Toolbox.Path;
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 
 public class ViewMainMenu extends Application {
@@ -20,6 +24,7 @@ public class ViewMainMenu extends Application {
     private Text screenText;
     private Text screenTextBack;
     private Font fontScreenText, fontScreenTextBack;
+    private ImageView curseur;
 
     public static void main(String[] args) {
         Application.launch(ViewMainMenu.class, args);
@@ -36,6 +41,8 @@ public class ViewMainMenu extends Application {
         scene = new Scene(root, 1200, 900, Color.BLACK);
         scene2 = new Scene(root2, 1200, 900, Color.BLACK);
         scene3 = new Scene(root3, 1200, 900, Color.BLACK);
+        curseur = new ImageView(Path.joueurFullHealth);
+        scene.setCursor(new ImageCursor(curseur.getImage()));
 
         // initialisation des boutons
         btn = initButton(150, 220, "Start");
