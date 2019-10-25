@@ -47,10 +47,6 @@ public class ViewHandler extends Application {
         primaryStage.show();
     }
 
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
     public void setEventHandlerMenu(ControllerMenu cm) {
         vMenu.setEvents(cm);
     }
