@@ -1,64 +1,47 @@
 package View;
 
+import Controller.ControllerMenu;
 import Toolbox.Path;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 
 public class ViewMainMenu {
-    private Stage primaryStage;
-    private Button btnStart, btnOption, btnQuit, btnBackMainP, btnBackMainP2;
-    private Scene scene, scene2, scene3;
-    private Group root, root2, root3;
+    private ViewHandler vhMenu;
+    private Button btnStart, btnOption, btnQuit;
+    private Group root;
     private Text screenText;
     private Text screenTextBack;
     private Font fontScreenText, fontScreenTextBack;
 
-    ViewMainMenu(Stage primaryStage, Group root/*, Group root2, Group root3*/){
-        this.primaryStage = primaryStage;
-        //scene.setCursor(Cursor.NONE);
+    ViewMainMenu(ViewHandler vhMenu, Group root){
+        this.vhMenu = vhMenu;
         this.root = root;
-        //this.root2 = root2;
-        //this.root3 = root3;
 
         // initialisation des boutons
         btnStart = initButton(150, 220, "Start");
         btnOption = initButton(150, 320, "Options");
         btnQuit = initButton(150,420,"Quit");
-        //btnBackMainP = initButton(150,120,"Back");
-        //btnBackMainP2 = initButton(250,420,"Back");
-
-        // action des boutons
-        btnStart.setOnAction(event -> primaryStage.setScene(scene));
-        btnOption.setOnAction(event -> primaryStage.setScene(scene2));
-        btnQuit.setOnAction(event -> primaryStage.close());
-        //btnBackMainP.setOnAction(event -> primaryStage.setScene(scene));
-        //btnBackMainP2.setOnAction(event -> primaryStage.setScene(scene));
 
         initTitle();
-        setVueMainMenu();
+        initView();
 
     }
 
-    void setVueMainMenu(){
+    void initView(){
         root.getChildren().clear();
         root.getChildren().add(btnStart);
         root.getChildren().add(btnOption);
         root.getChildren().add(btnQuit);
         root.getChildren().add(screenTextBack);
         root.getChildren().add(screenText);
-        //root2.getChildren().add(btnBackMainP2);
-        //root3.getChildren().add(btnBackMainP);
+
     }
 
     private Button initButton(int longeur, int largeur, String texteDuBouton) {
-
-        // Création d'un bouton
         Button b = new Button();
         b.setLayoutX(longeur);
         b.setLayoutY(largeur);
@@ -67,8 +50,6 @@ public class ViewMainMenu {
     }
 
     private Text titleScreen(String ecranTitre, int longueur, int largeur){
-
-        // Création d'un titre
         Text t = new Text();
         t.setText(ecranTitre);
         t.setLayoutX(longueur);
@@ -89,4 +70,21 @@ public class ViewMainMenu {
         screenText.setFill(Color.WHITE);
     }
 
+    public void setEvents(ControllerMenu mc) {
+        btnStart.setOnMouseClicked(mc);
+        btnOption.setOnMouseClicked(mc);
+        btnQuit.setOnMouseClicked(mc);
+    }
+
+    public Button getBtnStart() {
+        return btnStart;
+    }
+
+    public Button getBtnOption() {
+        return btnOption;
+    }
+
+    public Button getBtnQuit() {
+        return btnQuit;
+    }
 }

@@ -1,6 +1,11 @@
 package View;
 
-//import Controller.ControllerMenuPrin;
+import Controller.ControllerGame;
+import Controller.ControllerMenu;
+import Controller.ControllerOption;
+import Model.ModelGame;
+import Model.ModelMenu;
+import Model.ModelOption;
 import Toolbox.Music;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -10,22 +15,30 @@ import javafx.stage.Stage;
 
 public class ViewHandler extends Application {
     private Stage primaryStage;
-    private Stage primaryStageSelect;
-    private Scene scene, scene2, scene3;
-    private Group root, root2, root3;
-    private ViewMainMenu viewMenuPrinc;
-    private ViewSelectMenu viewSelectMenu;
-
+    private Scene scene;
+    private Group root;
+    private ViewMainMenu vMenu;
+    private ViewGame vGame;
+    private ViewOption vOption;
+    private ModelMenu modelMenu;
+    private ModelGame modelGame;
+    private ModelOption modelOption;
 
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
 
         root = new Group();
-        root2 = new Group();
         scene = new Scene(root, 1200, 900, Color.BLACK);
-        scene2 = new Scene(root2, 1200, 900, Color.BLACK);
 
-        viewMenuPrinc = new ViewMainMenu(primaryStage,root/*,root2,root3*/);
+        modelMenu = new ModelMenu();
+        modelGame = new ModelGame();
+        modelOption = new ModelOption();
+        vMenu = new ViewMainMenu(this,root);
+        vGame = new ViewGame(this,root);
+        vOption = new ViewOption(this,root);
+        ControllerMenu controllerMenu = new ControllerMenu(this, modelMenu);
+        ControllerGame controllerGame = new ControllerGame(this, modelGame);
+        ControllerOption controllerOption = new ControllerOption(this,modelOption);
 
         Music.startMainMenuMusic();
         primaryStage.setTitle("BootlegTale");
@@ -37,29 +50,39 @@ public class ViewHandler extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-    public ViewMainMenu getviewMenuPrinc() {
-        return viewMenuPrinc;
+
+    public void setEventHandlerMenu(ControllerMenu cm) {
+        vMenu.setEvents(cm);
+    }
+    public void setEventHandlerGame(ControllerGame cm){
+        vGame.setEventsBack(cm);
     }
 
-    public void setPrimaryStage(Stage primaryStageSelect){
-        this.primaryStageSelect = primaryStageSelect;
-        root3 = new Group();
-        scene3 = new Scene(root3, 1200, 900, Color.BLACK);
-
-        viewSelectMenu = new ViewSelectMenu(primaryStageSelect,root3);
-
-        primaryStageSelect.setScene(scene3);
-        primaryStageSelect.setResizable(false);
-        primaryStageSelect.show();
-
+    public void setEventHandlerOption(ControllerOption cm){
+        vOption.setEventsBack(cm);
     }
 
-    public Stage getPrimaryStageSelect(){
-        return primaryStageSelect;
-    }
-    public ViewSelectMenu getviewSelectMenu(){
-        return getviewSelectMenu();
+    public void setGameView() {
+        vGame.initView();
     }
 
+    public void setMenuView(){
+        vMenu.initView();
+    }
 
+    public void setOptionView(){
+        vOption.initView();
+    }
+
+    public ViewMainMenu getvMenu() {
+        return vMenu;
+    }
+
+    public ViewGame getvGame() {
+        return vGame;
+    }
+
+    public ViewOption getvOption(){
+        return vOption;
+    }
 }
