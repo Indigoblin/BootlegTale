@@ -3,7 +3,6 @@ package View;
 import Controller.ControllerGame;
 import Controller.ControllerMenu;
 import Controller.ControllerOption;
-import Model.Joueur;
 import Model.ModelGame;
 import Model.ModelMenu;
 import Model.ModelOption;
@@ -26,7 +25,9 @@ public class ViewHandler extends Application {
     private ModelGame modelGame;
     private ModelOption modelOption;
     private ControllerKeyboard keyListen;
-    private Joueur player;
+    private ControllerMenu controllerMenu;
+    private ControllerGame controllerGame;
+    private ControllerOption controllerOption;
 
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -39,9 +40,10 @@ public class ViewHandler extends Application {
         vMenu = new ViewMainMenu(this,root);
         vGame = new ViewGame(this,root);
         vOption = new ViewOption(this,root);
-        ControllerMenu controllerMenu = new ControllerMenu(this, modelMenu);
-        ControllerGame controllerGame = new ControllerGame(this, modelGame);
-        ControllerOption controllerOption = new ControllerOption(this,modelOption);
+        controllerMenu = new ControllerMenu(this, modelMenu);
+        controllerGame = new ControllerGame(this, modelGame);
+        controllerOption = new ControllerOption(this,modelOption);
+        keyListen = new ControllerKeyboard(this,modelGame);
 
         Music.startMainMenuMusic();
         primaryStage.setTitle("BootlegTale");

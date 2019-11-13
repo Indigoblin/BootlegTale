@@ -1,5 +1,9 @@
 package Controller;
 
+import Model.Joueur;
+import Model.ModelGame;
+import TimeLine.GameTL;
+import View.ViewHandler;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.KeyCode;
@@ -11,32 +15,36 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
     private boolean rightPressed = false;
     private boolean downPressed = false;
     private boolean leftPressed = false;
+    private ViewHandler launcher;
+    private ModelGame model;
     private Group root;
+    private GameTL jeuTimeLine;
 
-    //pouet test
+    //public ControllerKeyboard(ViewHandler launcher) {
+    //    this.launcher = launcher;
+    //    root.getScene().setOnKeyPressed(this);
+    //}
 
-    public ControllerKeyboard(Group root) {
-        this.root = root;
-        root.getScene().setOnKeyPressed(this);
+    public ControllerKeyboard(ViewHandler viewHandler, ModelGame model) {
+        this.model = model;
+        this.launcher = viewHandler;
+        this.launcher.setEventKeyboard(this);
+        jeuTimeLine = new GameTL(this);
     }
 
-    boolean isUpPressed() {
-        System.out.println("Haut");
+    public boolean isUpPressed() {
         return upPressed;
     }
 
-    boolean isRightPressed() {
-        System.out.println("Droite");
+    public boolean isRightPressed() {
         return rightPressed;
     }
 
-    boolean isDownPressed() {
-        System.out.println("Bas");
+    public boolean isDownPressed() {
         return downPressed;
     }
 
-    boolean isLeftPressed() {
-        System.out.println("Gauche");
+    public boolean isLeftPressed() {
         return leftPressed;
     }
 
@@ -44,39 +52,35 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
     public void handle(KeyEvent keyEvent) {
         if( keyEvent.getEventType().equals(KeyEvent.KEY_PRESSED) ) {
             if( keyEvent.getCode() == KeyCode.UP || keyEvent.getCode() == KeyCode.KP_UP || keyEvent.getCode() == KeyCode.Z ) {
-                System.out.println("Haut");
                 upPressed = true;
             }
             if( keyEvent.getCode() == KeyCode.RIGHT || keyEvent.getCode() == KeyCode.KP_RIGHT || keyEvent.getCode() == KeyCode.D ) {
-                System.out.println("Droite");
                 rightPressed = true;
             }
             if( keyEvent.getCode() == KeyCode.DOWN || keyEvent.getCode() == KeyCode.KP_DOWN || keyEvent.getCode() == KeyCode.S ) {
-                System.out.println("Bas");
                 downPressed = true;
             }
             if( keyEvent.getCode() == KeyCode.LEFT || keyEvent.getCode() == KeyCode.KP_LEFT || keyEvent.getCode() == KeyCode.Q ) {
-                System.out.println("Gauche");
                 leftPressed = true;
             }
         } else if( keyEvent.getEventType().equals(KeyEvent.KEY_RELEASED) ) {
             if( keyEvent.getCode() == KeyCode.UP || keyEvent.getCode() == KeyCode.KP_UP || keyEvent.getCode() == KeyCode.Z ) {
-                System.out.println("Haut");
                 upPressed = false;
             }
             if( keyEvent.getCode() == KeyCode.RIGHT || keyEvent.getCode() == KeyCode.KP_RIGHT || keyEvent.getCode() == KeyCode.D ) {
-                System.out.println("Droite");
                 rightPressed = false;
             }
             if( keyEvent.getCode() == KeyCode.DOWN || keyEvent.getCode() == KeyCode.KP_DOWN || keyEvent.getCode() == KeyCode.S ) {
-                System.out.println("Bas");
                 downPressed = false;
             }
             if( keyEvent.getCode() == KeyCode.LEFT || keyEvent.getCode() == KeyCode.KP_LEFT || keyEvent.getCode() == KeyCode.Q ) {
-                System.out.println("Gauche");
                 leftPressed = false;
             }
         }
 
+    }
+
+    public ViewHandler getLauncher() {
+        return launcher;
     }
 }

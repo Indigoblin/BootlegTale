@@ -3,6 +3,7 @@ package View;
 import Controller.ControllerGame;
 import Model.Joueur;
 import Controller.ControllerKeyboard;
+import Model.Npc;
 import Toolbox.Path;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -16,17 +17,19 @@ public class ViewGame {
     private Font fontScreenText;
     private ControllerKeyboard keyListen;
     private Joueur player;
+    private Npc npcDoggo;
 
 
     public ViewGame(ViewHandler vhGame, Group root) {
         this.vhGame = vhGame;
         this.root = root;
-        keyListen = new ControllerKeyboard(root);
         btnBackMainP = initButton(940,750,"Back");
     }
 
     void initView() {
         root.getChildren().clear();
+        player = new Joueur(root);
+        npcDoggo = new Npc(root);
         root.getChildren().add(btnBackMainP);
     }
 
@@ -54,4 +57,10 @@ public class ViewGame {
         root.getScene().setOnKeyPressed(kl);
         root.getScene().setOnKeyReleased(kl);
     }
+
+    public Joueur getPlayer() {
+        return player;
+    }
+
+
 }
