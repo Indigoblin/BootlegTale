@@ -3,12 +3,13 @@ package View;
 import Controller.ControllerGame;
 import Model.Joueur;
 import Controller.ControllerKeyboard;
-import Model.ModelBoxGame;
 import Model.Npc;
 import Toolbox.Path;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
 public class ViewGame {
@@ -19,21 +20,65 @@ public class ViewGame {
     private ControllerKeyboard keyListen;
     private Joueur player;
     private Npc npcDoggo;
-    private ModelBoxGame modelBoxGame;
+    private Rectangle r1;
+
+    private ImageView spritePlayer;
+    private int speed;
+    public static final String up = "Up";
+    public static final String left = "Left";
+    public static final String right = "Right";
+    public static final String down = "Down";
 
 
-    public ViewGame(ViewHandler vhGame, Group root) {
+    public void move(String direction){
+        switch (direction){
+            case up:
+                spritePlayer.setLayoutY(spritePlayer.getLayoutY()-speed);
+                break;
+
+            case left:
+                spritePlayer.setLayoutX(spritePlayer.getLayoutX()-speed);
+                break;
+
+            case right:
+                spritePlayer.setLayoutX(spritePlayer.getLayoutX()+speed);
+                break;
+
+            case down:
+                spritePlayer.setLayoutY(spritePlayer.getLayoutY()+speed);
+                break;
+        }
+    }
+
+    public void checkPosition(){
+        if (spritePlayer.getLayoutX() == 465) {
+            spritePlayer.setLayoutX(spritePlayer.getLayoutX()+speed);
+        }
+    }
+
+
+    public ViewGame(ViewHandler vhGame, Group root, Joueur player) {
         this.vhGame = vhGame;
         this.root = root;
+        this.player = player;
         btnBackMainP = initButton(940,750,"Back");
+        r1 = initRectangle(465,460,270,250);
+
+        spritePlayer = new ImageView(Path.joueurFullHealth);
+        spritePlayer.setFitHeight(100);
+        spritePlayer.setFitWidth(140);
+        spritePlayer.setX(530);
+        spritePlayer.setY(560);
+        speed = 7;
     }
 
     void initView() {
         root.getChildren().clear();
         npcDoggo = new Npc(root);
-        modelBoxGame = new ModelBoxGame(root);
-        player = new Joueur(root);
         root.getChildren().add(btnBackMainP);
+        root.getChildren().add(spritePlayer);
+        root.getChildren().add(r1);
+
     }
 
     private Button initButton(int longeur, int largeur, String texteDuBouton) {
@@ -46,6 +91,18 @@ public class ViewGame {
         b.setFont(fontScreenText);
         b.setTextFill(Color.WHITE);
         return b;
+    }
+
+    private Rectangle initRectangle(int x, int y, int width, int height){
+        Rectangle r1 = new Rectangle();
+        r1.setX(x);
+        r1.setY(y);
+        r1.setWidth(width);
+        r1.setHeight(height);
+        r1.setStroke(Color.WHITE);
+        r1.setFill(null);
+        r1.setStrokeWidth(8);
+        return r1;
     }
 
     public void setEventsBack(ControllerGame mc) {
@@ -64,6 +121,7 @@ public class ViewGame {
     public Joueur getPlayer() {
         return player;
     }
+
 
 
 }

@@ -17,16 +17,13 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
     private boolean leftPressed = false;
     private ViewHandler launcher;
     private ModelGame model;
+    private Joueur player;
     private Group root;
     private GameTL jeuTimeLine;
 
-    //public ControllerKeyboard(ViewHandler launcher) {
-    //    this.launcher = launcher;
-    //    root.getScene().setOnKeyPressed(this);
-    //}
-
-    public ControllerKeyboard(ViewHandler viewHandler, ModelGame model) {
+    public ControllerKeyboard(ViewHandler viewHandler, ModelGame model, Joueur player) {
         this.model = model;
+        this.player = player;
         this.launcher = viewHandler;
         this.launcher.setEventKeyboard(this);
         jeuTimeLine = new GameTL(this);
@@ -61,7 +58,9 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
                 downPressed = true;
             }
             if( keyEvent.getCode() == KeyCode.LEFT || keyEvent.getCode() == KeyCode.KP_LEFT || keyEvent.getCode() == KeyCode.Q ) {
+
                 leftPressed = true;
+                getLauncher().getvGame().checkPosition();
             }
         } else if( keyEvent.getEventType().equals(KeyEvent.KEY_RELEASED) ) {
             if( keyEvent.getCode() == KeyCode.UP || keyEvent.getCode() == KeyCode.KP_UP || keyEvent.getCode() == KeyCode.Z ) {
@@ -79,6 +78,8 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
         }
 
     }
+
+
 
     public ViewHandler getLauncher() {
         return launcher;
