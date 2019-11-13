@@ -13,6 +13,8 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
     private boolean leftPressed = false;
     private Group root;
 
+    //pouet test
+
     public ControllerKeyboard(Group root) {
         this.root = root;
         root.getScene().setOnKeyPressed(this);
