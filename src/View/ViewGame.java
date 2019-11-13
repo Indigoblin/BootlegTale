@@ -3,6 +3,7 @@ package View;
 import Controller.ControllerGame;
 import Model.Joueur;
 import Controller.ControllerKeyboard;
+import Model.ModelBoxGame;
 import Model.Npc;
 import Toolbox.Path;
 import javafx.scene.Group;
@@ -18,6 +19,7 @@ public class ViewGame {
     private ControllerKeyboard keyListen;
     private Joueur player;
     private Npc npcDoggo;
+    private ModelBoxGame modelBoxGame;
 
 
     public ViewGame(ViewHandler vhGame, Group root) {
@@ -29,6 +31,7 @@ public class ViewGame {
     void initView() {
         root.getChildren().clear();
         npcDoggo = new Npc(root);
+        modelBoxGame = new ModelBoxGame(root);
         player = new Joueur(root);
         root.getChildren().add(btnBackMainP);
     }

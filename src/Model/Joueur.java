@@ -19,7 +19,7 @@ public class Joueur {
         spritePlayer.setFitHeight(100);
         spritePlayer.setFitWidth(140);
         spritePlayer.setX(530);
-        spritePlayer.setY(600);
+        spritePlayer.setY(560);
         speed = 7;
         root.getChildren().add(spritePlayer);
     }
