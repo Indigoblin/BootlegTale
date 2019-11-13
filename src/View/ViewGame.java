@@ -28,8 +28,8 @@ public class ViewGame {
 
     void initView() {
         root.getChildren().clear();
-        player = new Joueur(root);
         npcDoggo = new Npc(root);
+        player = new Joueur(root);
         root.getChildren().add(btnBackMainP);
     }
 
