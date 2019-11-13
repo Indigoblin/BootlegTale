@@ -3,9 +3,11 @@ package View;
 import Controller.ControllerGame;
 import Controller.ControllerMenu;
 import Controller.ControllerOption;
+import Model.Joueur;
 import Model.ModelGame;
 import Model.ModelMenu;
 import Model.ModelOption;
+import Controller.ControllerKeyboard;
 import Toolbox.Music;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -23,10 +25,11 @@ public class ViewHandler extends Application {
     private ModelMenu modelMenu;
     private ModelGame modelGame;
     private ModelOption modelOption;
+    private ControllerKeyboard keyListen;
+    private Joueur player;
 
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-
         root = new Group();
         scene = new Scene(root, 1200, 900, Color.BLACK);
 
@@ -43,7 +46,7 @@ public class ViewHandler extends Application {
         Music.startMainMenuMusic();
         primaryStage.setTitle("BootlegTale");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         primaryStage.show();
     }
 
@@ -56,6 +59,10 @@ public class ViewHandler extends Application {
 
     public void setEventHandlerOption(ControllerOption cm){
         vOption.setEventsBack(cm);
+    }
+
+    public void setEventKeyboard(ControllerKeyboard kl){
+        vGame.setEvents(kl);
     }
 
     public void setGameView() {
@@ -81,4 +88,5 @@ public class ViewHandler extends Application {
     public ViewOption getvOption(){
         return vOption;
     }
+
 }

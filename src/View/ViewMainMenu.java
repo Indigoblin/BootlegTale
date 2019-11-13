@@ -13,22 +13,21 @@ public class ViewMainMenu {
     private ViewHandler vhMenu;
     private Button btnStart, btnOption, btnQuit;
     private Group root;
-    private Text screenText;
-    private Text screenTextBack;
-    private Font fontScreenText, fontScreenTextBack;
+    private Text screenText, screenTextBack, screenDevName;
+    private Font fontScreenText, fontScreenTextBack, fontScreenDevName;
 
     ViewMainMenu(ViewHandler vhMenu, Group root){
         this.vhMenu = vhMenu;
         this.root = root;
 
         // initialisation des boutons
-        btnStart = initButton(150, 220, "Start");
-        btnOption = initButton(150, 320, "Options");
-        btnQuit = initButton(150,420,"Quit");
+        btnStart = initButton(150, 420, "Start");
+        btnOption = initButton(800, 420, "Options");
+        btnQuit = initButton(500,720,"Quit");
 
+        dediDev();
         initTitle();
         initView();
-
     }
 
     void initView(){
@@ -38,6 +37,7 @@ public class ViewMainMenu {
         root.getChildren().add(btnQuit);
         root.getChildren().add(screenTextBack);
         root.getChildren().add(screenText);
+        root.getChildren().add(screenDevName);
 
     }
 
@@ -46,6 +46,10 @@ public class ViewMainMenu {
         b.setLayoutX(longeur);
         b.setLayoutY(largeur);
         b.setText(texteDuBouton);
+        b.setBackground(null);
+        fontScreenText = Font.loadFont(getClass().getResourceAsStream(Path.fontDTMSans), 60);
+        b.setFont(fontScreenText);
+        b.setTextFill(Color.WHITE);
         return b;
     }
 
@@ -68,6 +72,14 @@ public class ViewMainMenu {
         fontScreenText = Font.loadFont(getClass().getResourceAsStream(Path.monsterFriendFore), 80);
         screenText.setFont(fontScreenText);
         screenText.setFill(Color.WHITE);
+    }
+
+    private void dediDev(){
+        screenDevName = new Text();
+        screenDevName = titleScreen("Mélanie - Morwane",460,900);
+        fontScreenDevName= Font.loadFont(getClass().getResourceAsStream(Path.fontDTMSans), 35);
+        screenDevName.setFont(fontScreenDevName);
+        screenDevName.setFill(Color.GRAY);
     }
 
     public void setEvents(ControllerMenu mc) {

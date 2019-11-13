@@ -18,6 +18,7 @@ public class ControllerMenu implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
         if (event.getSource().equals(launcher.getvMenu().getBtnStart())) {
+            //launcher.setEventKeyboard();
             launcher.setGameView();
         }else if (event.getSource().equals(launcher.getvMenu().getBtnOption())){
             launcher.setOptionView();
