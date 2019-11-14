@@ -1,7 +1,6 @@
 package TimeLine;
 
 import Controller.ControllerKeyboard;
-import Model.Joueur;
 import View.ViewGame;
 import javafx.animation.AnimationTimer;
 
@@ -18,15 +17,19 @@ public class GameTL extends AnimationTimer {
     public void handle(long now) {
         if (controllerKeyboard.isUpPressed()){
             controllerKeyboard.getLauncher().getvGame().move(ViewGame.up);
+            controllerKeyboard.getLauncher().getvGame().checkPosition();
         }
         if(controllerKeyboard.isLeftPressed()){
             controllerKeyboard.getLauncher().getvGame().move(ViewGame.left);
+            controllerKeyboard.getLauncher().getvGame().checkPosition();
         }
         if(controllerKeyboard.isRightPressed()){
             controllerKeyboard.getLauncher().getvGame().move(ViewGame.right);
+            controllerKeyboard.getLauncher().getvGame().checkPosition();
         }
         if(controllerKeyboard.isDownPressed()){
             controllerKeyboard.getLauncher().getvGame().move(ViewGame.down);
+            controllerKeyboard.getLauncher().getvGame().checkPosition();
         }
     }
 }

@@ -21,7 +21,6 @@ public class ViewGame {
     private Joueur player;
     private Npc npcDoggo;
     private Rectangle r1;
-
     private ImageView spritePlayer;
     private int speed;
     public static final String up = "Up";
@@ -51,8 +50,17 @@ public class ViewGame {
     }
 
     public void checkPosition(){
-        if (spritePlayer.getLayoutX() == 465) {
-            spritePlayer.setLayoutX(spritePlayer.getLayoutX()+speed);
+        if (spritePlayer.getLayoutX() < -117) {
+            spritePlayer.setLayoutX(-117);
+        }
+        if (spritePlayer.getLayoutX() > 117){
+            spritePlayer.setLayoutX(117);
+        }
+        if (spritePlayer.getLayoutY() > 80){
+            spritePlayer.setLayoutY(80);
+        }
+        if (spritePlayer.getLayoutY() < -134){
+            spritePlayer.setLayoutY(-134);
         }
     }
 
@@ -122,6 +130,7 @@ public class ViewGame {
         return player;
     }
 
-
-
+    public Rectangle getR1() {
+        return r1;
+    }
 }

@@ -9,7 +9,6 @@ import javafx.scene.Group;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-
 public class ControllerKeyboard implements EventHandler<KeyEvent> {
     private boolean upPressed = false;
     private boolean rightPressed = false;
@@ -58,9 +57,8 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
                 downPressed = true;
             }
             if( keyEvent.getCode() == KeyCode.LEFT || keyEvent.getCode() == KeyCode.KP_LEFT || keyEvent.getCode() == KeyCode.Q ) {
-
                 leftPressed = true;
-                getLauncher().getvGame().checkPosition();
+
             }
         } else if( keyEvent.getEventType().equals(KeyEvent.KEY_RELEASED) ) {
             if( keyEvent.getCode() == KeyCode.UP || keyEvent.getCode() == KeyCode.KP_UP || keyEvent.getCode() == KeyCode.Z ) {
@@ -78,8 +76,6 @@ public class ControllerKeyboard implements EventHandler<KeyEvent> {
         }
 
     }
-
-
 
     public ViewHandler getLauncher() {
         return launcher;
