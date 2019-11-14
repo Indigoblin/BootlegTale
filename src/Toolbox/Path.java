@@ -22,5 +22,5 @@ public class Path {
     public static final String joueurDeath = "Asset/Pictures/PC/Death_SOUL.gif";
 
     // Sprite attack
-
+    public static final String doggoSword = "Asset/Pictures/NPC/doggoSword.png";
 }
